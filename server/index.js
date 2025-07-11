@@ -1,6 +1,8 @@
 require('dotenv').config()
 const express = require("express")
-require("./helpers.js/passport")
+const mongoose = require('mongoose');
+require("./models/userSchema")
+require("./services/passport")
 
 const app = express()
 require('./config/db')
