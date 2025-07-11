@@ -10,7 +10,8 @@ passport.use(new GoogleStrategy({
     callbackURL: "/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
     User.findOne({ googleId: profile.id }).then(existUser => {
-        if (existUser) console.log("already exists")
-        new User({ googleId: profile.id }).save()
+        if (existUser) done(null, existUser)
+
+        else new User({ googleId: profile.id }).save().then(user => done(null, user))
     })
 }))
