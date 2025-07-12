@@ -18,4 +18,5 @@ app.use(passport.session())
 require('./config/db')
 require("./router/authRoute")(app)
 
-app.listen(8000)
+const Port = process.env.PORT || 8000 
+app.listen(Port)
